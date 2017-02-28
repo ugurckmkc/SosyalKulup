@@ -13,6 +13,6 @@ public class MainActivity extends Activity {
         // DENEME İÇİN YAZILMIŞTIR.
         //test
         //this is test
-
+        //new test
     }
 }
