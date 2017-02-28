@@ -14,5 +14,6 @@ public class MainActivity extends Activity {
         //test
         //this is test
         //new test
+        // bu acayip bi test
     }
 }
