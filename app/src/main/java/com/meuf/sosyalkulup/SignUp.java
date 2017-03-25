@@ -2,6 +2,7 @@ package com.meuf.sosyalkulup;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
@@ -16,16 +17,30 @@ import java.net.URL;
 
 public class SignUp extends Activity {
 
-    EditText edit_username = (EditText) findViewById(R.id.id_username);
-    EditText edit_email = (EditText) findViewById(R.id.id_email);
-    EditText edit_pass = (EditText) findViewById(R.id.id_pass);
-    Button btn_sign = (Button) findViewById(R.id.btn_signup);
+    EditText edit_username;
+    EditText edit_email;
+    EditText edit_pass;
+    Button btn_sign;
+    Button btn_login;
     private static final String REGISTER_URL="http://sosyalkulup.hol.es/UserRegistration/register.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+
+        edit_username = (EditText) findViewById(R.id.id_username);
+        edit_email = (EditText) findViewById(R.id.id_email);
+        edit_pass = (EditText) findViewById(R.id.id_pass);
+        btn_sign = (Button) findViewById(R.id.btn_signup);
+        btn_login = (Button) findViewById(R.id.btn_login);
+        btn_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(SignUp.this,Login.class);
+                startActivity(intent);
+            }
+        });
 
         btn_sign.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,11 +56,11 @@ public class SignUp extends Activity {
         String password = edit_pass.getText().toString().trim().toLowerCase();
         register(username,email,password);
     }
-    private  void register(String username,String password,String email){
-        String urlsuffix = "?username=" + username +"&password=" + password + "&email=" + email;
+    private  void register(String username,String email,String password){
+        String urlsuffix = "?username=" + username + "&email=" + email +"&password=" + password;
         class RegisterUser extends AsyncTask<String,Void,String>{
 
-            ProgressDialog loading;
+            private ProgressDialog loading;
 
             @Override
             protected void onPreExecute(){
