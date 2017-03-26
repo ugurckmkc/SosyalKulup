@@ -23,7 +23,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".Login"
-            android:theme="@style/Theme.AppCompat.Light"
             >
         </activity>
         <activity android:name=".SignUp" >

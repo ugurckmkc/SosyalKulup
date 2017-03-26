@@ -46,14 +46,14 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:id="@+id/editText_email"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:drawableLeft="@drawable/user"
                     android:drawableTint="#FF4081"
                     android:hint=" Email"
-                    android:textColorHint="#ffffff"
-                    android:id="@+id/editText_email"
-                    android:inputType="textEmailAddress" />
+                    android:inputType="textEmailAddress"
+                     />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -67,7 +67,6 @@
                     android:drawableLeft="@drawable/lock"
                     android:drawableTint="#FF4081"
                     android:hint="Password"
-                    android:textColorHint="#ffffff"
                     android:id="@+id/editText_password"
                     android:inputType="textPassword" />
             </android.support.design.widget.TextInputLayout>
