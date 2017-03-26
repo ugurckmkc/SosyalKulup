@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#1c1c38"
+    android:background="#00555555"
     android:scrollbarAlwaysDrawVerticalTrack="true"
     tools:context="com.meuf.sosyalkulup.Login">
 
@@ -30,7 +30,7 @@
         android:layout_marginLeft="30dp"
         android:layout_marginRight="30dp"
         android:layout_marginTop="70dp"
-        android:background="#1c1c38"
+        android:background="#00555555"
         android:elevation="4dp"
         android:orientation="vertical"
         android:padding="20dp">
@@ -39,6 +39,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:background="#00555555"
             android:paddingTop="30dp">
 
             <android.support.design.widget.TextInputLayout
@@ -53,7 +54,7 @@
                     android:drawableTint="#FF4081"
                     android:hint=" Email"
                     android:inputType="textEmailAddress"
-                     />
+                    android:textColorHint="#ffffff" />
             </android.support.design.widget.TextInputLayout>
 
             <android.support.design.widget.TextInputLayout
@@ -61,14 +62,17 @@
                 android:layout_height="wrap_content">
 
                 <EditText
+                    android:id="@+id/editText_password"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:drawableLeft="@drawable/lock"
                     android:drawableTint="#FF4081"
                     android:hint="Password"
-                    android:id="@+id/editText_password"
-                    android:inputType="textPassword" />
+                    android:inputType="textPassword"
+                    android:selectAllOnFocus="true"
+                    android:singleLine="true"
+                    android:textColorHint="#ffffff" />
             </android.support.design.widget.TextInputLayout>
 
             <TextView
@@ -77,26 +81,27 @@
                 android:layout_gravity="right"
                 android:paddingTop="5dp"
                 android:text="Şifremi Unuttum"
-                android:textColor="#ffffff"/>
+                android:textColor="#ffffff" />
 
 
             <Button
+                android:id="@+id/btn_login"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:background="#8d1c38"
                 android:text="Giriş Yap"
-                android:id="@+id/btn_login"
                 android:textAllCaps="false"
                 android:textColor="#fff"
                 android:textSize="18sp" />
+
             <Button
+                android:id="@+id/btn_uye"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:background="#8d1c38"
                 android:text="Kayıt Ol"
-                android:id="@+id/btn_uye"
                 android:textAllCaps="false"
                 android:textColor="#fff"
                 android:textSize="18sp" />
