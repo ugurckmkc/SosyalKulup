@@ -86,7 +86,7 @@
 
             <Button
                 android:id="@+id/btn_login"
-                android:layout_width="fill_parent"
+                android:layout_width="126dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:background="#84d4d5"
@@ -97,7 +97,7 @@
 
             <Button
                 android:id="@+id/btn_uye"
-                android:layout_width="fill_parent"
+                android:layout_width="126dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:background="#006c79"
