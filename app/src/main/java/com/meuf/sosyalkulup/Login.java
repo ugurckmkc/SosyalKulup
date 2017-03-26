@@ -39,10 +39,12 @@ public class Login extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         editTextEmail=(EditText)findViewById(R.id.editText_email);
         editTextPassword=(EditText)findViewById(R.id.editText_password);
         BtnLogin=(Button)findViewById(R.id.btn_login);
         Btn_uye=(Button) findViewById(R.id.btn_uye);
+
         Btn_uye.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
