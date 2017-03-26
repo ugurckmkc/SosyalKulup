@@ -24,7 +24,7 @@ public class StartScreen extends Activity {
                     } catch (Exception e) {
                         e.printStackTrace();
                     } finally {
-                        Intent obj = new Intent(StartScreen.this, SignUp.class);
+                        Intent obj = new Intent(StartScreen.this, Login.class);
                         startActivity(obj);
                     }
                 }

@@ -5,6 +5,7 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -52,8 +53,18 @@ public class SignUp extends Activity {
 
     private void registerUser() {
         String username = edit_username.getText().toString().trim().toLowerCase();
+        if(TextUtils.isEmpty(username)){
+            edit_username.setError("Okul Numarası Boş Bıraklımaz.");
+
+        }
         String email = edit_email.getText().toString().trim().toLowerCase();
+        if(TextUtils.isEmpty(email)){
+            edit_email.setError("Email Boş Bıraklımaz.");
+        }
         String password = edit_pass.getText().toString().trim().toLowerCase();
+        if(TextUtils.isEmpty(password)){
+            edit_pass.setError("Parola Boş Bıraklımaz.");
+        }
         register(username,email,password);
     }
     private  void register(String username,String email,String password){

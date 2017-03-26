@@ -14,8 +14,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginTop="20dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Kullanıcı Adınızı Giriniz" />
+        android:hint="Okul Numaranızı Giriniz"
+        android:inputType="number" />
 
     <EditText
         android:id="@+id/id_pass"
@@ -53,5 +53,5 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/btn_signup"
         android:layout_centerHorizontal="true"
-        android:text="Giriş Yap" />
+        android:text="Zaten Üyeyim" />
 </RelativeLayout>
