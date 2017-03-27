@@ -9,26 +9,13 @@
     android:scrollbarAlwaysDrawVerticalTrack="true"
     tools:context="com.meuf.sosyalkulup.Login">
 
-    <TextView
-        android:id="@+id/login_title"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginTop="22dp"
-        android:fontFamily="sans-serif-smallcaps"
-        android:gravity="center_horizontal"
-        android:text="Sosyal Kulüp"
-        android:textColor="#fff"
-        android:textSize="26sp"
-        android:textStyle="bold"
-        android:typeface="normal" />
 
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="200dp"
         android:layout_height="200dp"
         android:background="@drawable/iconpng"
-        android:layout_alignTop="@+id/login_title"
+        android:layout_marginTop="22dp"
         android:layout_centerHorizontal="true">
 
     </FrameLayout>
