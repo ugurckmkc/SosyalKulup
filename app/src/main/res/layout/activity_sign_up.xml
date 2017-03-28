@@ -54,7 +54,7 @@
             android:ems="10"
             android:drawableLeft="@drawable/user"
             android:drawableTint="#ff4081"
-            android:hint="Username"
+            android:hint="Kullanıcı Adı"
             android:inputType="number"
 
             />
@@ -74,15 +74,15 @@
 
             <EditText
                 android:id="@+id/id_pass"
-                android:layout_width="match_parent"
+                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:ems="10"
-                android:hint="Password"
+                android:hint="Şifre"
                 android:inputType="textPassword"
                 android:drawableLeft="@drawable/lock"
                 android:drawableTint="#FF4081"
+                android:selectAllOnFocus="true"
+                android:singleLine="true"
                 android:layout_below="@+id/id_email"
-                android:layout_alignParentStart="true"
                 />
 
         <Button
@@ -95,10 +95,10 @@
             android:textAllCaps="false"
             android:textColor="#fff"
             android:layout_marginTop="27dp"
-            android:text="SIGN UP" />
+            android:text="Kayıt Ol" />
 
             <Button
-                android:text="LOGIN"
+                android:text="Giriş Yap"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/btn_login"
@@ -113,7 +113,7 @@
                 android:id="@+id/text_login"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Have an account?"
+                android:text="Hesabın var mı?"
                 android:textColor="@android:color/black"
                 android:layout_alignParentEnd="false"
                 android:layout_alignParentTop="false"
