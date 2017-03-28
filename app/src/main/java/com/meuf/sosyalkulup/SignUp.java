@@ -9,6 +9,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.BufferedReader;
@@ -23,6 +24,7 @@ public class SignUp extends Activity {
     EditText edit_pass;
     Button btn_sign;
     Button btn_login;
+    TextView text_login;
     private static final String REGISTER_URL="http://sosyalkulup.hol.es/UserRegistration/register.php";
 
     @Override
@@ -35,6 +37,8 @@ public class SignUp extends Activity {
         edit_pass = (EditText) findViewById(R.id.id_pass);
         btn_sign = (Button) findViewById(R.id.btn_signup);
         btn_login = (Button) findViewById(R.id.btn_login);
+        text_login=(TextView) findViewById(R.id.text_login);
+
         btn_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
