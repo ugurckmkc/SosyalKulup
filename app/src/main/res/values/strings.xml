@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SosyalKulup</string>
+    <string name="title_activity_bottom_bar">BottomBarActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_chat">Chat</string>
 </resources>

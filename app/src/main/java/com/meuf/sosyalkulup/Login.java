@@ -83,7 +83,7 @@ public class Login extends Activity {
 
                             editor.commit();
 
-                            Intent intent = new Intent(Login.this, MainActivity.class);
+                            Intent intent = new Intent(Login.this, BottomBarActivity.class);
                             startActivity(intent);
                         }else{
                             Toast.makeText(Login.this, "Yanlış Kullanıcı Adı ya da Şifre", Toast.LENGTH_LONG).show();
