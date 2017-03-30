@@ -2,27 +2,18 @@ package com.meuf.sosyalkulup;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.Locale;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
     DrawerLayout mDrawerLayout;
@@ -32,48 +23,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setHomeAsUpIndicator(R.drawable.hamburger_icon);
-        actionBar.setDisplayHomeAsUpEnabled(true);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.navigation_view);
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(MenuItem menuItem) {
-                menuItem.setChecked(true);
-                mDrawerLayout.closeDrawers();
-                Toast.makeText(MainActivity.this, menuItem.getTitle(), Toast.LENGTH_LONG).show();
-                return true;
-            }
-        });
         DesignDemoPagerAdapter adapter = new DesignDemoPagerAdapter(getSupportFragmentManager());
         ViewPager viewPager = (ViewPager)findViewById(R.id.viewpager);
         viewPager.setAdapter(adapter);
         TabLayout tabLayout = (TabLayout)findViewById(R.id.tablayout);
         tabLayout.setupWithViewPager(viewPager);
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        switch (id) {
-            case android.R.id.home:
-                mDrawerLayout.openDrawer(GravityCompat.START);
-                return true;
-            case R.id.textView3: // Burası Yanlış
-                return true;
         }
-
-        return super.onOptionsItemSelected(item);
-    }
     public static class DesignDemoFragment extends Fragment {
         private static final String TAB_POSITION = "tab_position";
 
@@ -94,21 +50,12 @@ public class MainActivity extends AppCompatActivity {
         public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
             Bundle args = getArguments();
             int tabPosition = args.getInt(TAB_POSITION);
-
-            ArrayList<String> items = new ArrayList<String>();
-            for (int i = 0; i < 50; i++) {
-                items.add("Tab #" + tabPosition + " item #" + i);
-            }
-
-            View v =  inflater.inflate(R.layout.fragment_list_view, container, false);
-            RecyclerView recyclerView = (RecyclerView)v.findViewById(R.id.recyclerview);
-            recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-            recyclerView.setAdapter(new DesignDemoRecyclerAdapter(items));
-
-            return v;
+            TextView tv = new TextView(getActivity());
+            tv.setGravity(Gravity.CENTER);
+            tv.setText("Text in Tab #" + tabPosition);
+            return tv;
         }
     }
-
     static class DesignDemoPagerAdapter extends FragmentStatePagerAdapter {
 
         public DesignDemoPagerAdapter(FragmentManager fm) {
@@ -127,16 +74,7 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public CharSequence getPageTitle(int position) {
-            Locale l = Locale.getDefault();
-            switch (position) {
-                case 0:
-                    return "Ana Sayfa";
-                case 1:
-                    return "Duyurular";
-                case 2:
-                    return "Sohbet";
-            }
-            return null;
+            return "Tab " + position;
         }
     }
 }
