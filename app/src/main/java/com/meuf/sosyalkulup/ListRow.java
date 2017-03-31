@@ -1,8 +1,6 @@
 package com.meuf.sosyalkulup;
 
-/**
- * Created by UgurCkmkc on 31/03/2017.
- */
+
 
 public class ListRow {
     private String kulup_name;

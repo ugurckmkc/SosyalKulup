@@ -11,9 +11,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-/**
- * Created by UgurCkmkc on 31/03/2017.
- */
+
 
 public class KulupListAdapter extends BaseAdapter{
 
