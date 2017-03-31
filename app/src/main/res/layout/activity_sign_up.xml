@@ -5,7 +5,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/loginbackground"
-        tools:context="com.meuf.sosyalkulup.SignUp">
+        tools:context="com.meuf.sosyalkulup.Authentication.SignUp">
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="200dp"

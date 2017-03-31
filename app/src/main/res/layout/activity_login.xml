@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:background="@drawable/loginbackground"
     android:scrollbarAlwaysDrawVerticalTrack="true"
-    tools:context="com.meuf.sosyalkulup.Login">
+    tools:context="com.meuf.sosyalkulup.Authentication.Login">
 
 
     <FrameLayout

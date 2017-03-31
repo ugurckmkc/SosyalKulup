@@ -1,4 +1,4 @@
-package com.meuf.sosyalkulup;
+package com.meuf.sosyalkulup.Authentication;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
@@ -13,6 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.meuf.sosyalkulup.R;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;

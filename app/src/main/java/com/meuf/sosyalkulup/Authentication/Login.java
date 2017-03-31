@@ -1,4 +1,4 @@
-package com.meuf.sosyalkulup;
+package com.meuf.sosyalkulup.Authentication;
 
 import android.app.Activity;
 import android.content.Context;
@@ -19,6 +19,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.meuf.sosyalkulup.MainActivity;
+import com.meuf.sosyalkulup.R;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -84,6 +86,7 @@ public class Login extends Activity {
                             editor.commit();
 
                             Intent intent = new Intent(Login.this, MainActivity.class);
+                            intent.putExtra(email,"emil");
                             startActivity(intent);
                         }else{
                             Toast.makeText(Login.this, "Yanlış Kullanıcı Adı ya da Şifre", Toast.LENGTH_LONG).show();
@@ -107,7 +110,7 @@ public class Login extends Activity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
-    /*@Override
+    @Override
     protected void onResume() {
         super.onResume();
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF_NAME,Context.MODE_PRIVATE);
@@ -116,5 +119,5 @@ public class Login extends Activity {
             Intent intent = new Intent(Login.this, MainActivity.class);
             startActivity(intent);
         }
-    }*/
+    }
 }

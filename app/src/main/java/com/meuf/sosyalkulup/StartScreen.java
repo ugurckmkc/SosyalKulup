@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
 
+import com.meuf.sosyalkulup.Authentication.Login;
+
 
 public class StartScreen extends Activity {
 

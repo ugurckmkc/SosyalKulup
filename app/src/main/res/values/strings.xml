@@ -13,4 +13,7 @@
     <string name="nav_item_location">Konum</string>
     <string name="drawer_header_text">Sosyal Kulüp</string>
     <string name="title_activity_second">SecondActivity</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Kulup Fragment</string>
 </resources>
