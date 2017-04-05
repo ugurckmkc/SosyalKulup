@@ -12,9 +12,7 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-/**
- * Created by UgurCkmkc on 31/03/2017.
- */
+
 
 public class KulupListAdapter extends RecyclerView.Adapter<KulupListAdapter.ViewHolder>{
 
