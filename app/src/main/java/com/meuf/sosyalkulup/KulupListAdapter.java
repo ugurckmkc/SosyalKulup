@@ -1,13 +1,14 @@
 package com.meuf.sosyalkulup;
 
-import android.app.Activity;
 import android.content.Context;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.List;
 
@@ -15,54 +16,45 @@ import java.util.List;
  * Created by UgurCkmkc on 31/03/2017.
  */
 
-public class KulupListAdapter extends BaseAdapter{
+public class KulupListAdapter extends RecyclerView.Adapter<KulupListAdapter.ViewHolder>{
 
-    Context context;
-    List<ListRow> listItems;
+    private Context context;
+    private List<ListRow> my_data;
 
-    KulupListAdapter(Context context, List<ListRow> listItems){
+    public KulupListAdapter(Context context, List<ListRow> my_data) {
         this.context = context;
-        this.listItems = listItems;
+        this.my_data = my_data;
     }
 
     @Override
-    public int getCount() {
-        return listItems.size();
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.kulup_list_row,parent,false);
+        return  new ViewHolder(itemView);
     }
 
     @Override
-    public Object getItem(int position) {
-        return listItems.get(position);
+    public void onBindViewHolder(ViewHolder holder, int position) {
+
+        holder.clubName.setText(my_data.get(position).getClubId());
+        Glide.with(context).load(my_data.get(position).getPics()).into(holder.imageView);
+
     }
 
     @Override
-    public long getItemId(int position) {
-        return listItems.indexOf(getItem(position));
+    public int getItemCount() {
+        return my_data.size();
     }
 
-    public class ViewHolder{
-        TextView kulup_name;
-        ImageView profil_pic_id;
-    }
+    public class ViewHolder extends RecyclerView.ViewHolder {
 
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder = null;
+        public TextView clubName;
+        public ImageView imageView;
 
-        LayoutInflater mInflater = (LayoutInflater) context.getSystemService(Activity.LAYOUT_INFLATER_SERVICE);
-
-        if(convertView == null){
-            convertView = mInflater.inflate(R.layout.kulup_list_row,null);
-            holder = new ViewHolder();
-            holder.kulup_name = (TextView) convertView.findViewById(R.id.Kulup_name);
-            holder.profil_pic_id = (ImageView) convertView.findViewById(R.id.kulup_logo);
-
-            ListRow list_pos = listItems.get(position);
-
-            holder.profil_pic_id.setImageResource(list_pos.getProfil_pic_id());
-            holder.kulup_name.setText(list_pos.getKulup_name());
+        public ViewHolder(View itemView) {
+            super(itemView);
+            clubName = (TextView) itemView.findViewById(R.id.clubName);
+            imageView = (ImageView) itemView.findViewById(R.id.image);
         }
-
-        return null;
     }
 }
