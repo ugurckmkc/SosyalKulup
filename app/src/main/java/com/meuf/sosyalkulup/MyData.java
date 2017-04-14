@@ -1,13 +1,15 @@
 package com.meuf.sosyalkulup;
 
 
-
-public class ListRow {
+/**
+ * Created by filipp on 9/16/2016.
+ */
+public class MyData {
 
     private int clubId;
     private String clubName,pics;
 
-    public ListRow(int clubId, String clubName, String pics) {
+    public MyData(int clubId, String clubName, String pics) {
         this.clubId = clubId;
         this.clubName = clubName;
         this.pics = pics;

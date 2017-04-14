@@ -1,5 +1,6 @@
 package com.meuf.sosyalkulup;
 
+
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,14 +13,15 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-
-
-public class KulupListAdapter extends RecyclerView.Adapter<KulupListAdapter.ViewHolder>{
+/**
+ * Created by filipp on 9/16/2016.
+ */
+public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
     private Context context;
-    private List<ListRow> my_data;
+    private List<MyData> my_data;
 
-    public KulupListAdapter(Context context, List<ListRow> my_data) {
+    public CustomAdapter(Context context, List<MyData> my_data) {
         this.context = context;
         this.my_data = my_data;
     }
@@ -27,14 +29,15 @@ public class KulupListAdapter extends RecyclerView.Adapter<KulupListAdapter.View
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.kulup_list_row,parent,false);
-        return  new ViewHolder(itemView);
+        View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.card,parent,false);
+
+        return new ViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        holder.clubName.setText(my_data.get(position).getClubId());
+        holder.clubName.setText(my_data.get(position).getClubName());
         Glide.with(context).load(my_data.get(position).getPics()).into(holder.imageView);
 
     }
@@ -44,7 +47,7 @@ public class KulupListAdapter extends RecyclerView.Adapter<KulupListAdapter.View
         return my_data.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public  class ViewHolder extends  RecyclerView.ViewHolder{
 
         public TextView clubName;
         public ImageView imageView;

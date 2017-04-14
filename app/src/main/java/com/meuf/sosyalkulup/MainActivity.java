@@ -1,62 +1,70 @@
 package com.meuf.sosyalkulup;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
+import android.view.View;
+import android.widget.ImageView;
 
-import com.meuf.sosyalkulup.Fragments.KulupListFragment;
+import com.hitomi.cmlibrary.CircleMenu;
+import com.hitomi.cmlibrary.OnMenuSelectedListener;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends Activity {
+
+    CircleMenu circleMenu;
+    public ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        MyAdapter adapter = new MyAdapter(getSupportFragmentManager());
-        ViewPager viewPager = (ViewPager)findViewById(R.id.viewpager);
-        viewPager.setAdapter(adapter);
-        TabLayout tabLayout = (TabLayout)findViewById(R.id.tablayout);
-        tabLayout.setupWithViewPager(viewPager);
-        }
+        circleMenu = (CircleMenu) findViewById(R.id.circle_menu);
+        imageView = (ImageView) findViewById(R.id.imageView2);
 
-    static class MyAdapter extends FragmentStatePagerAdapter {
 
-        public MyAdapter(FragmentManager fm) {
-            super(fm);
-        }
+        circleMenu.setMainMenu(Color.parseColor("#CDCDCD"), R.mipmap.icon_menu, R.mipmap.icon_cancel);
+        circleMenu.addSubMenu(Color.parseColor("#FFFFFF"), R.drawable.iconpng)
+                .addSubMenu(Color.parseColor("#FFFFFF"), R.mipmap.icon_chat)
+                .addSubMenu(Color.parseColor("#FFFFFF"), R.mipmap.icon_notify);
 
-        @Override
-        public Fragment getItem(int position) {
-            Fragment fragment = null;
-            switch(position){
-                case 0:
-                    fragment = new KulupListFragment();
-                    break;
-                case 1:
-                    fragment = new KulupListFragment();
-                    break;
-                case 2:
-                    fragment = new KulupListFragment();
+
+        circleMenu.setOnMenuSelectedListener(new OnMenuSelectedListener(){
+
+            @Override
+            public void onMenuSelected(int index) {
+
+                switch (index) {
+
+                    case 0:
+                        Intent intent = new Intent(MainActivity.this, KulupListActivity.class);
+                        startActivity(intent);
+                        break;
+                    case 1:
+                        Intent intent1 = new Intent(MainActivity.this, KulupSohbetActivity.class);
+                        startActivity(intent1);
+                        break;
+                    case 2:
+                        Intent intent2 = new Intent(MainActivity.this, KulupDuyuruActivity.class);
+                        startActivity(intent2);
+                        break;
+
+                }
             }
-            return fragment;
-        }
 
+        });
 
-        @Override
-        public int getCount() {
-            return 3;
-        }
+    }
 
-        @Override
-        public CharSequence getPageTitle(int position) {
-            if(position == 0)return "Kulüpler";
-            else if (position == 1) return  "Duyurular";
-            else return  "Sohbet";
-        }
+    @Override
+    public void onBackPressed() {
+        if (circleMenu.isOpened()){
+            imageView.setVisibility(View.VISIBLE);
+            circleMenu.closeMenu();
+            }
+
+        else
+            finish();
     }
 }
