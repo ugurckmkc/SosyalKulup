@@ -24,6 +24,7 @@ public class MainActivity extends Activity {
         imageView = (ImageView) findViewById(R.id.imageView2);
 
 
+
         circleMenu.setMainMenu(Color.parseColor("#CDCDCD"), R.mipmap.icon_menu, R.mipmap.icon_cancel);
         circleMenu.addSubMenu(Color.parseColor("#FFFFFF"), R.drawable.iconpng)
                 .addSubMenu(Color.parseColor("#FFFFFF"), R.mipmap.icon_chat)
@@ -60,6 +61,7 @@ public class MainActivity extends Activity {
     @Override
     public void onBackPressed() {
         if (circleMenu.isOpened()){
+
             imageView.setVisibility(View.VISIBLE);
             circleMenu.closeMenu();
             }

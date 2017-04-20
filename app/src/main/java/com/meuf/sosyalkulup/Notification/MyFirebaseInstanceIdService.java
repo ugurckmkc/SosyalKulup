@@ -1,4 +1,4 @@
-package com.meuf.sosyalkulup;
+package com.meuf.sosyalkulup.Notification;
 
 import android.util.Log;
 

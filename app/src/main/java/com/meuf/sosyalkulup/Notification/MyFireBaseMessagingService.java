@@ -1,7 +1,9 @@
-package com.meuf.sosyalkulup;
+package com.meuf.sosyalkulup.Notification;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.meuf.sosyalkulup.KulupDuyuruActivity;
+import com.meuf.sosyalkulup.R;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
