@@ -1,35 +1,27 @@
 {
   "project_info": {
-    "project_number": "593702504423",
-    "firebase_url": "https://sosyal-klup.firebaseio.com",
-    "project_id": "sosyal-klup",
-    "storage_bucket": "sosyal-klup.appspot.com"
+    "project_number": "941555872734",
+    "firebase_url": "https://sosyal-kulup.firebaseio.com",
+    "project_id": "sosyal-kulup",
+    "storage_bucket": "sosyal-kulup.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:593702504423:android:83f6980a2e421caf",
+        "mobilesdk_app_id": "1:941555872734:android:83f6980a2e421caf",
         "android_client_info": {
           "package_name": "com.meuf.sosyalkulup"
         }
       },
       "oauth_client": [
         {
-          "client_id": "593702504423-vu577o1fjuh1bqn86ldiisbslo4padq8.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.meuf.sosyalkulup",
-            "certificate_hash": "e56df09ae3770410ecd2cb862d93a76393fc3032"
-          }
-        },
-        {
-          "client_id": "593702504423-pjt8fo7c2u3cr2snmeaj8f32ralgbdoe.apps.googleusercontent.com",
+          "client_id": "941555872734-fo1dejja6erhbn6n2t5lhc3qq6vjs5f4.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyC2uIwBC_u8Fm8BO4fpxTb4xwz4hA_4m-g"
+          "current_key": "AIzaSyAc2IdB4ovPt5YX-2z9k0Xo4RfyDc7-cQQ"
         }
       ],
       "services": {
@@ -37,13 +29,8 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 2,
-          "other_platform_oauth_client": [
-            {
-              "client_id": "593702504423-pjt8fo7c2u3cr2snmeaj8f32ralgbdoe.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "status": 1,
+          "other_platform_oauth_client": []
         },
         "ads_service": {
           "status": 2
