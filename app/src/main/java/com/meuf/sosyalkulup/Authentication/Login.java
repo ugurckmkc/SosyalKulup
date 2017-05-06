@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.v4.widget.ContentLoadingProgressBar;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -37,6 +38,7 @@ public class Login extends Activity {
     private EditText editTextPassword;
     private Button BtnLogin;
     private Button Btn_uye;
+    private ContentLoadingProgressBar mProgressBar;
     private boolean loggedIn=false;
 
     @Override
@@ -46,6 +48,7 @@ public class Login extends Activity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_login);
 
+
         editTextEmail=(EditText)findViewById(R.id.editText_email);
         editTextPassword=(EditText)findViewById(R.id.editText_password);
         BtnLogin=(Button)findViewById(R.id.btn_login);
@@ -54,6 +57,7 @@ public class Login extends Activity {
         Btn_uye.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent KayıtEkranı = new Intent(Login.this,SignUp.class);
                 startActivity(KayıtEkranı);
             }
@@ -85,6 +89,7 @@ public class Login extends Activity {
 
                             editor.commit();
 
+
                             Intent intent = new Intent(Login.this, MainActivity.class);
                             intent.putExtra(email,"emil");
                             startActivity(intent);
@@ -110,7 +115,7 @@ public class Login extends Activity {
         RequestQueue requestQueue = Volley.newRequestQueue(this);
         requestQueue.add(stringRequest);
     }
-   @Override
+  /* @Override
     protected void onResume() {
         super.onResume();
         SharedPreferences sharedPreferences = getSharedPreferences(SHARED_PREF_NAME,Context.MODE_PRIVATE);
@@ -119,5 +124,6 @@ public class Login extends Activity {
             Intent intent = new Intent(Login.this, MainActivity.class);
             startActivity(intent);
         }
-    }
+    }*/
+
 }

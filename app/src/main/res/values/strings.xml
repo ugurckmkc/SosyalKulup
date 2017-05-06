@@ -13,6 +13,7 @@
     <string name="nav_item_location">Konum</string>
     <string name="drawer_header_text">Sosyal Kulüp</string>
     <string name="title_activity_second">SecondActivity</string>
+    <string name="APP_ID">D1F93CBD-3E1C-40A1-A4B1-546B6AA98344</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Kulup Fragment</string>

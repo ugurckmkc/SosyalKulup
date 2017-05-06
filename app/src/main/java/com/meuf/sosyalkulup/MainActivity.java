@@ -43,6 +43,8 @@ public class MainActivity extends Activity {
                         startActivity(intent);
                         break;
                     case 1:
+                        Intent intent = new Intent(this, RegistrationIntentService.class);
+                        startService(intent);
                         Intent intent1 = new Intent(MainActivity.this, KulupSohbetActivity.class);
                         startActivity(intent1);
                         break;

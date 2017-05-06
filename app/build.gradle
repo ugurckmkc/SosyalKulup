@@ -19,13 +19,16 @@ android {
         }
     }
 }
-
+repositories {
+    maven { url "https://raw.githubusercontent.com/smilefam/SendBird-SDK-Android/master/" }
+}
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
 
+    compile 'com.sendbird.sdk:sendbird-android-sdk:3.0.24'
     compile 'com.android.support.constraint:constraint-layout:1.0.0-beta5'
     compile 'com.android.support:appcompat-v7:25.0.0'
     compile 'com.mcxiaoke.volley:library-aar:1.0.0'
@@ -35,6 +38,7 @@ dependencies {
     compile 'com.android.support:support-vector-drawable:23.4.0'
     compile 'com.android.support:support-v13:23.4.0'
     compile 'com.android.support:recyclerview-v7:22.2.1'
+    compile 'com.google.android.gms:play-services:9.0.0'
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.android.support:support-v4:23.4.0'
     compile 'com.github.Hitomis:CircleMenu:v1.1.0'
