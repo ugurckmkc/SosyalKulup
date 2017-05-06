@@ -1,16 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.meuf.sosyalkulup.KulupSohbetActivity">
+    tools:context=".KulupSohbetActivity"
+    tools:ignore="MergeRootFrame">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="sohbet"
-        tools:layout_editor_absoluteX="72dp"
-        tools:layout_editor_absoluteY="77dp" />
-</android.support.constraint.ConstraintLayout>
+    <fragment
+        class="com.meuf.sosyalkulup.MainFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</FrameLayout>

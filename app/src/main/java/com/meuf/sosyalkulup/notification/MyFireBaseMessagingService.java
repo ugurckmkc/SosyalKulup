@@ -1,4 +1,4 @@
-package com.meuf.sosyalkulup.Notification;
+package com.meuf.sosyalkulup.notification;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;

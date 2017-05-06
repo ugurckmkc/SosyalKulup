@@ -1,4 +1,4 @@
-package com.meuf.sosyalkulup.Authentication;
+package com.meuf.sosyalkulup.authentication;
 
 import android.app.Activity;
 import android.app.ProgressDialog;

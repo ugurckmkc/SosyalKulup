@@ -1,4 +1,4 @@
-package com.meuf.sosyalkulup.Authentication;
+package com.meuf.sosyalkulup.authentication;
 
 import android.app.Activity;
 import android.content.Context;
@@ -43,6 +43,8 @@ public class Login extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
