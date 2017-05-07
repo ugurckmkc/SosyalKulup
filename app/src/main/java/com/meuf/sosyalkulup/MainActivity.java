@@ -9,6 +9,7 @@ import android.widget.ImageView;
 
 import com.hitomi.cmlibrary.CircleMenu;
 import com.hitomi.cmlibrary.OnMenuSelectedListener;
+import com.meuf.sosyalkulup.chat.SocketActivity;
 
 public class MainActivity extends Activity {
 
@@ -21,8 +22,6 @@ public class MainActivity extends Activity {
 
         circleMenu = (CircleMenu) findViewById(R.id.circle_menu);
         imageView = (ImageView) findViewById(R.id.imageView2);
-
-
 
         circleMenu.setMainMenu(Color.parseColor("#CDCDCD"), R.mipmap.icon_menu, R.mipmap.icon_cancel);
         circleMenu.addSubMenu(Color.parseColor("#FFFFFF"), R.drawable.iconpng)
@@ -42,7 +41,7 @@ public class MainActivity extends Activity {
                         startActivity(intent);
                         break;
                     case 1:
-                        Intent intent1 = new Intent(MainActivity.this, KulupSohbetActivity.class);
+                        Intent intent1 = new Intent(MainActivity.this, SocketActivity.class);
                         startActivity(intent1);
                         break;
                     case 2:

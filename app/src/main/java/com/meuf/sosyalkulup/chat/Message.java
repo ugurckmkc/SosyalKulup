@@ -1,18 +1,19 @@
-package com.meuf.sosyalkulup;
+package com.meuf.sosyalkulup.chat;
+
+import android.graphics.Bitmap;
 
 /**
  * Created by UgurCkmkc on 07/05/2017.
  */
 
 public class Message {
-
     public static final int TYPE_MESSAGE = 0;
     public static final int TYPE_LOG = 1;
     public static final int TYPE_ACTION = 2;
 
     private int mType;
     private String mMessage;
-    private String mUsername;
+    private Bitmap mImage;
 
     private Message() {}
 
@@ -24,22 +25,22 @@ public class Message {
         return mMessage;
     };
 
-    public String getUsername() {
-        return mUsername;
+    public Bitmap getImage() {
+        return mImage;
     };
 
 
     public static class Builder {
         private final int mType;
-        private String mUsername;
+        private Bitmap mImage;
         private String mMessage;
 
         public Builder(int type) {
             mType = type;
         }
 
-        public Builder username(String username) {
-            mUsername = username;
+        public Builder image(Bitmap image) {
+            mImage = image;
             return this;
         }
 
@@ -51,7 +52,7 @@ public class Message {
         public Message build() {
             Message message = new Message();
             message.mType = mType;
-            message.mUsername = mUsername;
+            message.mImage = mImage;
             message.mMessage = mMessage;
             return message;
         }

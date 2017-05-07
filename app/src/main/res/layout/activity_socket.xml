@@ -3,11 +3,14 @@
     android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".KulupSohbetActivity"
+    tools:context=".chat.SocketActivity"
     tools:ignore="MergeRootFrame">
 
     <fragment
-        class="com.meuf.sosyalkulup.MainFragment"
+        android:id="@+id/chat"
+        class="com.meuf.sosyalkulup.chat.ChatFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        tools:layout="@layout/fragment_chat"
+        />
 </FrameLayout>
