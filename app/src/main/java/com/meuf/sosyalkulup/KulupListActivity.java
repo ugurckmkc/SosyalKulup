@@ -2,10 +2,15 @@ package com.meuf.sosyalkulup;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.View;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,7 +30,7 @@ public class KulupListActivity extends Activity {
     private GridLayoutManager gridLayoutManager;
     private CustomAdapter adapter;
     private List<MyData> data_list;
-
+    //public Intent intent = new Intent(this,KulupListDescription.class);
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +47,22 @@ public class KulupListActivity extends Activity {
 
             adapter = new CustomAdapter(this,data_list);
             recyclerView.setAdapter(adapter);
+
+            recyclerView.addOnItemTouchListener(
+                    new RecyclerItemClickListener(getApplicationContext(), new RecyclerItemClickListener.OnItemClickListener()
+                    {
+
+                        @Override
+                        public void onItemClick(View view,int position){
+
+                            //intent.putExtra("CLUB_ID",position);
+                            startActivity(new Intent(KulupListActivity.this, KulupListDescription.class));
+
+                        }
+
+                    })
+
+            );
 
            /* recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
                 @Override

@@ -35,7 +35,8 @@
         <activity android:name=".MainActivity" />
         <activity android:name=".KulupListActivity" />
         <activity android:name=".KulupDuyuruActivity" />
-        <activity android:name=".chat.SocketActivity"></activity>
+        <activity android:name=".chat.SocketActivity" />
+        <activity android:name=".KulupListDescription"></activity>
     </application>
 
 </manifest>
