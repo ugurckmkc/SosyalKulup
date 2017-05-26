@@ -60,7 +60,7 @@ public class ChatFragment extends Fragment {
     private Socket socket;
     {
         try{
-            socket = IO.socket("http://192.168.0.12:2000");
+            socket = IO.socket("http://172.17.194.222:2000");
         }catch(URISyntaxException e){
             throw new RuntimeException(e);
         }
