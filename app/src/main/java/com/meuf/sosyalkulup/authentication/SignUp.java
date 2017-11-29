@@ -1,118 +1,108 @@
 package com.meuf.sosyalkulup.authentication;
 
-import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.meuf.sosyalkulup.R;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+public class SignUp extends AppCompatActivity {
 
-public class SignUp extends Activity {
+    private EditText inputEmail, inputPassword;     //hit option + enter if you on mac , for windows hit ctrl + enter
+    private Button btnSignIn, btnSignUp, btnResetPassword;
+    private ProgressBar progressBar;
+    private FirebaseAuth auth;
 
-    EditText edit_username;
-    EditText edit_email;
-    EditText edit_pass;
-    Button btn_sign;
-    Button btn_login;
-    TextView text_login;
-    private static final String REGISTER_URL="http://sosyalkulup.hol.es/UserRegistration/register.php";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_sign_up);
+        //Get Firebase auth instance
+        auth = FirebaseAuth.getInstance();
 
-        edit_username = (EditText) findViewById(R.id.id_username);
-        edit_email = (EditText) findViewById(R.id.id_email);
-        edit_pass = (EditText) findViewById(R.id.id_pass);
-        btn_sign = (Button) findViewById(R.id.btn_signup);
-        btn_login = (Button) findViewById(R.id.btn_login);
-        text_login=(TextView) findViewById(R.id.text_login);
+        btnSignIn = (Button) findViewById(R.id.btn_login);
+        btnSignUp = (Button) findViewById(R.id.btn_signup);
+        inputEmail = (EditText) findViewById(R.id.email);
+        inputPassword = (EditText) findViewById(R.id.password);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
+        btnResetPassword = (Button) findViewById(R.id.btn_reset_password);
 
-        btn_login.setOnClickListener(new View.OnClickListener() {
+        btnResetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(SignUp.this,Login.class);
-                startActivity(intent);
+                startActivity(new Intent(SignUp.this, ResetPasswordActivity.class));
             }
         });
 
-        btn_sign.setOnClickListener(new View.OnClickListener() {
+        btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                registerUser();
+                finish();
             }
         });
-    }
 
-    private void registerUser() {
-        String username = edit_username.getText().toString().trim().toLowerCase();
-        if(TextUtils.isEmpty(username)){
-            edit_username.setError("Okul Numarası Boş Bıraklımaz.");
-
-        }
-        String email = edit_email.getText().toString().trim().toLowerCase();
-        if(TextUtils.isEmpty(email)){
-            edit_email.setError("Email Boş Bıraklımaz.");
-        }
-        String password = edit_pass.getText().toString().trim().toLowerCase();
-        if(TextUtils.isEmpty(password)){
-            edit_pass.setError("Parola Boş Bıraklımaz.");
-        }
-        register(username,email,password);
-    }
-    private  void register(String username,String email,String password){
-        String urlsuffix = "?username=" + username + "&email=" + email +"&password=" + password;
-        class RegisterUser extends AsyncTask<String,Void,String>{
-
-            private ProgressDialog loading;
-
+        btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
-            protected void onPreExecute(){
-                super.onPreExecute();
-                loading = ProgressDialog.show(SignUp.this,"Lütfen Bekleyiniz",null,true,true);
-            }
-            @Override
-            protected void onPostExecute(String s){
-                super.onPostExecute(s);
-                loading.dismiss();
-                Toast.makeText(getApplicationContext(),"Kayıt Başarılı.",Toast.LENGTH_SHORT).show();
-            }
+            public void onClick(View v) {
 
-            @Override
-            protected String doInBackground(String... params) {
-                String s = params[0];
-                BufferedReader bufferReader = null;
-                try {
-                    URL url = new URL(REGISTER_URL + s);
-                    HttpURLConnection con = (HttpURLConnection)url.openConnection();
-                    bufferReader=new BufferedReader(new InputStreamReader(con.getInputStream()));
-                    String result;
-                    result = bufferReader.readLine();
-                    return result;
+                String email = inputEmail.getText().toString().trim();
+                String password = inputPassword.getText().toString().trim();
 
-                }catch (Exception e){
-                    return null;
+                if (TextUtils.isEmpty(email)) {
+                    Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                    return;
                 }
+
+                if (TextUtils.isEmpty(password)) {
+                    Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (password.length() < 6) {
+                    Toast.makeText(getApplicationContext(), "Password too short, enter minimum 6 characters!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+               // progressBar.setVisibility(View.VISIBLE);
+                //create user
+                auth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                Toast.makeText(SignUp.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
+                                //progressBar.setVisibility(View.GONE);
+                                // If sign in fails, display a message to the user. If sign in succeeds
+                                // the auth state listener will be notified and logic to handle the
+                                // signed in user can be handled in the listener.
+                                if (!task.isSuccessful()) {
+                                    Toast.makeText(SignUp.this, "Authentication failed." + task.getException(),
+                                            Toast.LENGTH_SHORT).show();
+                                } else {
+                                    startActivity(new Intent(SignUp.this, Login.class));
+                                    finish();
+                                }
+                            }
+                        });
+
             }
-        }
-        RegisterUser ur= new RegisterUser();
-        ur.execute(urlsuffix);
+        });
     }
+
+    /*@Override
+    protected void onResume() {
+        super.onResume();
+        progressBar.setVisibility(View.GONE);
+    }*/
 }

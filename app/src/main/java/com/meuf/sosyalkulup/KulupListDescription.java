@@ -1,60 +1,61 @@
 package com.meuf.sosyalkulup;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.text.Layout;
-import android.widget.ImageView;
-import android.widget.TextView;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
+import com.meuf.sosyalkulup.Adapters.DescriptionAdapter;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
 import org.json.JSONArray;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.io.IOException;
-
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 
 
 public class KulupListDescription extends Activity {
 
 
-   // private DescriptionAdapter adapter;
-    private List<MyDescriptionData> data_list=new ArrayList<>();
-    private Layout layout;
-    Intent intent = getIntent();
-    int CLUB_ID=intent.getIntExtra("CLUB_ID",0);
+    private RecyclerView recycler_view_desc;
+    private GridLayoutManager gridLayoutManager;
+    private DescriptionAdapter adapter;
+    private List<MyDescriptionData> data_list_desc;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kulup_list_description);
 
-        TextView txtTitle=(TextView)findViewById(R.id.txtTitle);
-        TextView txtDescription=(TextView) findViewById(R.id.txtDescription);
-        ImageView clubPics = (ImageView) findViewById(R.id.clubPic);
-        Context context=this;
-
+        int CLUB_ID = getIntent().getIntExtra("CLUB_ID",0);
 
         load_data_from_server(CLUB_ID);//send club id from back activity
-        txtTitle.setText(data_list.get(0).getTitle());
-        Glide.with(context).load(data_list.get(0).getClubPics()).into(clubPics);
-        txtDescription.setText(data_list.get(0).getDescription());
 
-}
+        recycler_view_desc = (RecyclerView) findViewById(R.id.recycler_view_desc);
+        data_list_desc = new ArrayList<>();
+
+        gridLayoutManager = new GridLayoutManager(this,1);
+        recycler_view_desc.setLayoutManager(gridLayoutManager);
+
+        adapter = new DescriptionAdapter(this,data_list_desc);
+        recycler_view_desc.setAdapter(adapter);
+
+
+    }
 
     private void load_data_from_server(final int id)
     {
-        AsyncTask<Integer,Void,Void> task= new AsyncTask<Integer, Void, Void>() {
+        @SuppressLint("StaticFieldLeak") AsyncTask<Integer,Void,Void> task= new AsyncTask<Integer, Void, Void>() {
             private ProgressDialog loading;
 
             @Override
@@ -75,14 +76,13 @@ public class KulupListDescription extends Activity {
                 try{
                     Response response = client.newCall(request).execute();
                     JSONArray array = new JSONArray(response.body().string());
-                    for(int i=0; i<array.length(); i++)
-                    {
-                        JSONObject object = array.getJSONObject(i);
-                        MyDescriptionData data = new MyDescriptionData(object.getInt("clubId"),object.getString("title"),
-                        object.getString("activity_kulup_list_description"),object.getString("clubPics"));
 
-                        data_list.add(data);
-                    }
+                        JSONObject object = array.getJSONObject(id);
+
+                        MyDescriptionData dataDesc = new MyDescriptionData(object.getInt("clubInfoId"), object.getString("title"), object.getString("description"), object.getInt("clubId"), object.getString("clubpics"));
+
+                        data_list_desc.add(dataDesc);
+
 
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -94,7 +94,19 @@ public class KulupListDescription extends Activity {
             @Override
             protected void onPostExecute(Void aVoid)
             {
+                //TextView denemeTxt = (TextView) findViewById(R.id.deneme_txt);
+                //denemeTxt.setText(data_list.get(0).getTitle());
+
+                adapter.notifyDataSetChanged();
                 loading.dismiss();
+               /* TextView txtTitle=(TextView)findViewById(R.id.txtTitle);
+                TextView txtDescription=(TextView) findViewById(R.id.txtDescription);
+                ImageView clubPics = (ImageView) findViewById(R.id.clubPic);
+
+                txtTitle.setText(data_list.get(0).getTitle());
+                Glide.with(getApplicationContext()).load(data_list.get(0).getClubPics()).into(clubPics);
+                txtDescription.setText(data_list.get(0).getDescription());
+*/
             }
         };
         task.execute(id);

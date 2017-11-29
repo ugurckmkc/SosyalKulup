@@ -1,26 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/loginbackground"
-    tools:context="com.meuf.sosyalkulup.KulupDuyuruActivity">
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    tools:context="com.meuf.sosyalkulup.Fragments.MainActivity">
 
-    <ImageView
-        android:id="@+id/imageView2"
+    <android.support.design.widget.TabLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/circlebackground"
-        android:visibility="visible" />
-
-    <com.hitomi.cmlibrary.CircleMenu
-        android:id="@+id/circle_menu"
-        android:layout_width="450dp"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:id="@+id/tablayout"
+        android:background="@color/primary_dark"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
-        />
+    </android.support.design.widget.TabLayout>
 
-</RelativeLayout>
+    <android.support.v4.view.ViewPager
+        android:layout_width="match_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/pager">
+
+    </android.support.v4.view.ViewPager>
+
+
+</LinearLayout>

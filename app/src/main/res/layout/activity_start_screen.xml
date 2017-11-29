@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/intropic"
-    tools:context="com.meuf.sosyalkulup.StartScreen"
+    tools:context="com.meuf.sosyalkulup.authentication.StartScreen"
     tools:keepScreenOn="false">
 
 </LinearLayout>

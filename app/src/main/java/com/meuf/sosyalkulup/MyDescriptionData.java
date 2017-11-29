@@ -6,22 +6,35 @@ package com.meuf.sosyalkulup;
 
 public class MyDescriptionData {
 
-    private int clubId;
-    private String title, description, clubPics;
+    private int clubInfoId,clubId;
+    private String Title, description, clubpics;
 
-    public MyDescriptionData(int clubId,String title, String description, String clubPics)
+    public MyDescriptionData(int clubInfoId,String Title, String description,int clubId, String clubpics)
     {
-        this.clubId=clubId;
+        this.clubInfoId = clubInfoId;
+        this.Title=Title;
         this.description=description;
-        this.title=title;
-        this.clubPics=clubPics;
+        this.clubId=clubId;
+        this.clubpics=clubpics;
     }
-    public int getClubId(){return clubId;}
-    public void setClubId(int clubId){this.clubId=clubId;}
-    public String getTitle(){return title;}
-    public void setTitle(String title){this.title = title;}
+    public int getclubInfoId(){return clubInfoId;}
+
+    public void setclubInfoId(int clubInfoId){this.clubInfoId=clubInfoId;}
+
+    public String getTitle(){return Title;}
+
+    public void setTitle(String Title){this.Title = Title;}
+
     public String getDescription(){return description;}
+
     public void setDescription(String description){this.description=description;}
-    public String getClubPics(){return clubPics;}
-    public void setClubPics(String clubPics){this.clubPics=clubPics;}
+
+    public int getClubId(){return clubId;}
+
+    public void setClubId(int clubId){this.clubId=clubId;}
+
+    public String getclubpics(){return clubpics;}
+
+    public void setclubpics(String clubPics){this.clubpics=clubpics;}
 }
+

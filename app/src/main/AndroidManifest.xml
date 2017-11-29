@@ -12,31 +12,30 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light">
-        <service android:name=".notification.MyFirebaseInstanceIdService">
-            <intent-filter>
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
-            </intent-filter>
-        </service>
-        <service android:name=".notification.MyFireBaseMessagingService">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
 
-        <activity android:name=".StartScreen">
+
+        <activity android:name=".authentication.StartScreen">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".Fragments.MainActivity"
+            android:launchMode="singleTop"/>
+
+        <service android:name=".notification.MyFirebaseInstanceIdService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
         <activity android:name=".authentication.Login" />
         <activity android:name=".authentication.SignUp" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".KulupListActivity" />
-        <activity android:name=".KulupDuyuruActivity" />
-        <activity android:name=".chat.SocketActivity" />
         <activity android:name=".KulupListDescription" />
+        <activity android:name=".authentication.ResetPasswordActivity" />
+        <activity android:name=".ChatActivity" />
     </application>
 
 </manifest>
