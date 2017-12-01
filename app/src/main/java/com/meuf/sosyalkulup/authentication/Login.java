@@ -20,7 +20,7 @@ import com.meuf.sosyalkulup.R;
 
 public class Login extends AppCompatActivity {
 
-    private EditText inputEmail, inputPassword;
+    private EditText inputschoolno, inputPassword;
     private FirebaseAuth auth;
     private ProgressBar progressBar;
     private Button btnSignup, btnLogin, btnReset;
@@ -33,13 +33,13 @@ public class Login extends AppCompatActivity {
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
-        if(auth.getCurrentUser()!= null){
+        /*if(auth.getCurrentUser()!= null){
             finish();
             startActivity(new Intent(getApplicationContext(),MainActivity.class));
-        }
+        }*/
 
         setContentView(R.layout.activity_login);
-        inputEmail = (EditText) findViewById(R.id.email);
+        inputschoolno = (EditText) findViewById(R.id.schoolno);
         inputPassword = (EditText) findViewById(R.id.password);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         btnSignup = (Button) findViewById(R.id.btn_signup);
@@ -66,11 +66,11 @@ public class Login extends AppCompatActivity {
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String email = inputEmail.getText().toString();
+                String schoolno = inputschoolno.getText().toString();
                 final String password = inputPassword.getText().toString();
 
-                if (TextUtils.isEmpty(email)) {
-                    Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                if (TextUtils.isEmpty(schoolno)) {
+                    Toast.makeText(getApplicationContext(), "Okul numaranızı giriniz!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -82,7 +82,7 @@ public class Login extends AppCompatActivity {
                 //progressBar.setVisibility(View.VISIBLE);
 
                 //authenticate user
-                auth.signInWithEmailAndPassword(email, password)
+                auth.signInWithEmailAndPassword(schoolno + "@dogus.edu.tr", password)
                         .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
