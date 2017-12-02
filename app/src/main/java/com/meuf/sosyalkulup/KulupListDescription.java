@@ -65,8 +65,6 @@ public class KulupListDescription extends Activity {
 
     }
 
-
-
     private void load_data_from_server(final int id)
     {
         @SuppressLint("StaticFieldLeak") AsyncTask<Integer,Void,Void> task= new AsyncTask<Integer, Void, Void>() {

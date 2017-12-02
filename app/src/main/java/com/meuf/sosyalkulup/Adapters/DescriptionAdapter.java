@@ -15,7 +15,7 @@ import com.meuf.sosyalkulup.R;
 import java.util.List;
 
 /**
- * Created by faruk on 8.05.2017.
+ * Created by UgurCkmkc on 02/12/2017.
  */
 
 public class DescriptionAdapter extends RecyclerView.Adapter<DescriptionAdapter.ViewHolder>{

@@ -16,8 +16,9 @@ import com.meuf.sosyalkulup.R;
 import java.util.List;
 
 /**
- * Created by filipp on 9/16/2016.
+ * Created by UgurCkmkc on 02/12/2017.
  */
+
 public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder> {
 
     private Context context;
