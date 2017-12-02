@@ -17,9 +17,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.meuf.sosyalkulup.R;
 
-import static android.app.ProgressDialog.*;
+import static android.app.ProgressDialog.show;
 
 public class SignUp extends AppCompatActivity {
 
@@ -95,7 +96,7 @@ public class SignUp extends AppCompatActivity {
                             .addOnCompleteListener(SignUp.this, new OnCompleteListener<AuthResult>() {
                                 @Override
                                 public void onComplete(@NonNull Task<AuthResult> task) {
-                                    Toast.makeText(SignUp.this, "Sosyal Kulüp Hesabınız Başarıyla Oluşturuldu.", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(SignUp.this, "Sosyal Kulüp Hesabınız Başarıyla Oluşturuldu. Doğrulama Maili Gönderiliyor.", Toast.LENGTH_SHORT).show();
                                     //progressBar.setVisibility(View.GONE);
                                     // If sign in fails, display a message to the user. If sign in succeeds
                                     // the auth state listener will be notified and logic to handle the
@@ -103,7 +104,10 @@ public class SignUp extends AppCompatActivity {
                                     if (!task.isSuccessful()) {
                                         Toast.makeText(SignUp.this, "Giriş Başarısız." + task.getException(),
                                                 Toast.LENGTH_SHORT).show();
-                                    } else {
+                                    } else if(task.isSuccessful()){
+                                        //Verifacation
+                                        sendVerificationEmail();
+
                                         startActivity(new Intent(SignUp.this, Login.class));
                                         finish();
                                     }
@@ -111,9 +115,24 @@ public class SignUp extends AppCompatActivity {
                             });
             }
         });
-
     }
+    public void sendVerificationEmail(){
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
+        if(user != null){
+            user.sendEmailVerification()
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                Toast.makeText(SignUp.this,"Doğrulama Email'i Gönderildi.",Toast.LENGTH_SHORT).show();
+                            }else{
+                                Toast.makeText(SignUp.this,"Doğrulama Email'i Gönderilemedi",Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+        }
+    }
     /*@Override
     protected void onResume() {
         super.onResume();

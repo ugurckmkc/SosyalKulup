@@ -7,31 +7,34 @@
     android:orientation="horizontal">
 
     <android.support.v7.widget.CardView
-        android:layout_width="250dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="10sp"
-        app:cardBackgroundColor="#81d4fa"
+        android:layout_margin="5sp"
+        app:cardBackgroundColor="#ece5dd"
         app:cardCornerRadius="20sp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:padding="10dp">
+            android:padding="7dp">
 
             <TextView
                 android:id="@+id/txtUserLeft"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:text="TextView" />
+                android:layout_marginBottom="5dp"
+                android:text="TextView"
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="8sp" />
 
             <TextView
                 android:id="@+id/txtMessageLeft"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="TextView"
-                android:textSize="24sp" />
+                android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                android:textSize="11dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -43,7 +46,9 @@
                     android:id="@+id/txtTimeLeft"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="TextView" />
+                    android:text="TextView"
+                    android:textColor="@color/common_google_signin_btn_text_dark_focused"
+                    android:textSize="8sp" />
             </LinearLayout>
         </LinearLayout>
 

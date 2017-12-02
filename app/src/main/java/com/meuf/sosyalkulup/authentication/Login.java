@@ -15,6 +15,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.meuf.sosyalkulup.Fragments.MainActivity;
 import com.meuf.sosyalkulup.R;
 
@@ -33,7 +34,7 @@ public class Login extends AppCompatActivity {
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
-        /*if(auth.getCurrentUser()!= null){
+       /* if(auth.getCurrentUser()!= null){
             finish();
             startActivity(new Intent(getApplicationContext(),MainActivity.class));
         }*/
@@ -86,6 +87,7 @@ public class Login extends AppCompatActivity {
                         .addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
+                                FirebaseUser user = auth.getCurrentUser();
                                 // If sign in fails, display a message to the user. If sign in succeeds
                                 // the auth state listener will be notified and logic to handle the
                                 // signed in user can be handled in the listener.
@@ -98,9 +100,16 @@ public class Login extends AppCompatActivity {
                                         Toast.makeText(Login.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
                                 } else {
-                                    Intent intent = new Intent(Login.this, MainActivity.class);
-                                    startActivity(intent);
-                                    finish();
+                                    try{
+                                        if(user.isEmailVerified()){
+                                            Intent intent = new Intent(Login.this, MainActivity.class);
+                                            startActivity(intent);
+                                            finish();
+                                        }else
+                                            Toast.makeText(Login.this,"Email Adresi Doğrulanmamış. \n Gelen Kutunuzu Kontrol Edin.",Toast.LENGTH_SHORT).show();
+                                    }catch (NullPointerException e){
+
+                                    }
                                 }
                             }
                         });
