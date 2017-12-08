@@ -45,7 +45,7 @@ public class StartScreen extends Activity {
                         }
                         editor.putString("title", Title);
                         editor.putString("message", Message);
-                        editor.commit();
+                        editor.apply();
 
                         Intent obj = new Intent(StartScreen.this, Login.class);
                         startActivity(obj);

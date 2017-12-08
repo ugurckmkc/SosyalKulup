@@ -70,6 +70,7 @@ public class KulupDuyuruFragment extends Fragment {
 
         receiveEvent(0);
 
+
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 1);
         recycler_view_event.setLayoutManager(gridLayoutManager);
 
@@ -91,8 +92,8 @@ public class KulupDuyuruFragment extends Fragment {
 
     @Override
     public void onResume() {
-        super.onResume();
 
+        super.onResume();
         SharedPreferences sharedPref = getActivity().getSharedPreferences("com.meuf.sosyalkulup", Context.MODE_PRIVATE);
 
         String Title1 = sharedPref.getString("title", "Etkinlik Bulunamadı");
@@ -100,14 +101,9 @@ public class KulupDuyuruFragment extends Fragment {
 
         Title.setText(Title1);
         Message.setText(Message1);
-
         //if(Title1 != "Etkinlik Bulunamadı")
-        pushEvent();
-    }
-    private void pushEvent(){
-        String eventName1 = Title.getText().toString().trim().toLowerCase();
-        String eventDescription1 = Message.getText().toString().trim().toLowerCase();
-        events(eventName1,eventDescription1);
+        events(Title1,Message1);
+
     }
     private void events(String eventName, String eventDescription){
         String urlsuffix ="?eventName=" + eventName +"&eventDescription=" + eventDescription;

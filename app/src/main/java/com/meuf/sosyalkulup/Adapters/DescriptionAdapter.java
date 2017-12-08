@@ -61,6 +61,8 @@ public class DescriptionAdapter extends RecyclerView.Adapter<DescriptionAdapter.
             txtTitle =(TextView) itemView.findViewById(R.id.txtTitle);
             txtDescription=(TextView) itemView.findViewById(R.id.txtDescription);
 
+            image.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            image.setAdjustViewBounds(true);
         }
    }
 }

@@ -59,6 +59,9 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.ViewHolder
             super(itemView);
             clubName = (TextView) itemView.findViewById(R.id.clubName);
             imageView = (ImageView) itemView.findViewById(R.id.image);
+
+            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+            imageView.setAdjustViewBounds(true);
         }
     }
 }
