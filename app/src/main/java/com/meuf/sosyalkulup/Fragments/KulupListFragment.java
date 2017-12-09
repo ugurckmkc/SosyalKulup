@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -58,6 +59,7 @@ public class KulupListFragment extends Fragment {
                              Bundle savedInstanceState) {
         final View rootView = inflater.inflate(R.layout.fragment_kulup_list,container,false);
         // Inflate the layout for this fragment
+        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
 
         recyclerView = (RecyclerView)rootView.findViewById(R.id.recycler_view);
         data_list  = new ArrayList<>();
@@ -99,7 +101,6 @@ public class KulupListFragment extends Fragment {
 
         return rootView;
     }
-
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
@@ -161,6 +162,7 @@ public class KulupListFragment extends Fragment {
 
         task.execute(id);
     }
+
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name

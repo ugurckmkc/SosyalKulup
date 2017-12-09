@@ -24,6 +24,7 @@
             android:layout_gravity="bottom"
             android:text="Kayıt ol"
             android:textSize="13sp" />
+
     </LinearLayout>
 
 </LinearLayout>
