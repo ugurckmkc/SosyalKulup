@@ -7,8 +7,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.Button;
 
 import com.meuf.sosyalkulup.Adapters.DescriptionAdapter;
 import com.squareup.okhttp.OkHttpClient;
@@ -32,8 +30,6 @@ public class KulupListDescription extends Activity {
     private GridLayoutManager gridLayoutManager;
     private DescriptionAdapter adapter;
     private List<MyDescriptionData> data_list_desc;
-    private Button button;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,16 +48,6 @@ public class KulupListDescription extends Activity {
 
         adapter = new DescriptionAdapter(this,data_list_desc);
         recycler_view_desc.setAdapter(adapter);
-
-        button = (Button) findViewById(R.id.btn_kayıt);
-        // Buradan devam edeceğiz
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
 
     }
 
