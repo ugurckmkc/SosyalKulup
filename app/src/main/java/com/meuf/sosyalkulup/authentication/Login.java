@@ -34,10 +34,10 @@ public class Login extends AppCompatActivity {
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
-        if(auth.getCurrentUser()!= null){
+      /*  if(auth.getCurrentUser()!= null){
             finish();
             startActivity(new Intent(getApplicationContext(),MainActivity.class));
-        }
+        } */
 
         setContentView(R.layout.activity_login);
         inputschoolno = (EditText) findViewById(R.id.schoolno);
@@ -76,7 +76,7 @@ public class Login extends AppCompatActivity {
                 }
 
                 if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Şifrenizi Giriniz!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 

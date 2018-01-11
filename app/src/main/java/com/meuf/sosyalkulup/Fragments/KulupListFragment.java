@@ -9,6 +9,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -20,6 +21,7 @@ import android.view.ViewGroup;
 import com.meuf.sosyalkulup.Adapters.CustomAdapter;
 import com.meuf.sosyalkulup.KulupListDescription;
 import com.meuf.sosyalkulup.MyData;
+import com.meuf.sosyalkulup.ProfilActivity;
 import com.meuf.sosyalkulup.R;
 import com.meuf.sosyalkulup.RecyclerItemClickListener;
 
@@ -60,6 +62,16 @@ public class KulupListFragment extends Fragment {
         final View rootView = inflater.inflate(R.layout.fragment_kulup_list,container,false);
         // Inflate the layout for this fragment
         ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+
+        final FloatingActionButton fab = (FloatingActionButton) rootView.findViewById(R.id.floatingActionButton);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //fab.setVisibility(View.GONE);
+                Intent intent = new Intent(getContext(),ProfilActivity.class);
+                startActivity(intent);
+            }
+        });
 
         recyclerView = (RecyclerView)rootView.findViewById(R.id.recycler_view);
         data_list  = new ArrayList<>();

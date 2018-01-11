@@ -6,9 +6,9 @@ package com.meuf.sosyalkulup;
 
 public class Message {
 
-    String mesajText;
-    String gonderici;
-    String zaman;
+    private String mesajText;
+    private String gonderici;
+    private String zaman;
 
     public Message() {
     }

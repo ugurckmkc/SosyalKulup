@@ -12,6 +12,7 @@ import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -102,6 +103,8 @@ public class KulupDuyuruFragment extends Fragment {
         Title.setText(Title1);
         Message.setText(Message1);
         //if(Title1 != "Etkinlik Bulunamadı")
+        Log.d("myTag", Title1);
+        Log.d("myTag", Message1);
         events(Title1,Message1);
 
     }

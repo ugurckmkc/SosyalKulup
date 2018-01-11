@@ -4,8 +4,6 @@ package com.meuf.sosyalkulup.Fragments;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -43,6 +41,7 @@ public class ChatListFragment extends Fragment {
     public OnFragmentInteractionListener mListener;
 
     public ChatListFragment() {
+
         // Required empty public constructor
     }
 
@@ -53,15 +52,6 @@ public class ChatListFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_chat_list,container,false);
 
-        FloatingActionButton fab = (FloatingActionButton) view.findViewById(R.id.floatingActionButton);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view,"buraya istediğin şey gelecek",Snackbar.LENGTH_LONG)
-                        .setAction("Action",null).show();
-            }
-        });
-
         fAuth = FirebaseAuth.getInstance();
 
         listView = (ListView)view.findViewById(R.id.listViewSubjects);
@@ -71,10 +61,6 @@ public class ChatListFragment extends Fragment {
 
         adapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, android.R.id.text1,subjectLists);
         listView.setAdapter(adapter);
-
-
-
-
 
         dbRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -93,7 +79,6 @@ public class ChatListFragment extends Fragment {
                 Toast.makeText(getContext(),""+databaseError.getMessage(),Toast.LENGTH_SHORT).show();
             }
         });
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
