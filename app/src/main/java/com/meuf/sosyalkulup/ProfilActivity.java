@@ -3,7 +3,6 @@ package com.meuf.sosyalkulup;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -83,13 +82,6 @@ public class ProfilActivity extends Activity {
 
                 loading.show();
 
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    public void run() {
-                        loading.dismiss();
-                    }
-                }, 1000);
-
                 final HashMap<String, String> user = new HashMap<String, String>();
                 user.put("ProfilName", profil_name_edit.getText().toString().trim());
                 user.put("ProfilLastName", profil_lastname_edit.getText().toString().trim());
@@ -137,8 +129,9 @@ public class ProfilActivity extends Activity {
             if(checkBox12.isChecked() == true){
                 dbref.child("DEMK").child(firuser.getUid()).setValue(user);
             }
-                finish();
             Toast.makeText(ProfilActivity.this,"Kulüp kaydınız başarı ile tamamlanmıştır.",Toast.LENGTH_SHORT).show();
+                loading.dismiss();
+                finish();
             }
         });
     }
