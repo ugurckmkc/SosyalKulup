@@ -34,10 +34,10 @@ public class Login extends AppCompatActivity {
         //Get Firebase auth instance
         auth = FirebaseAuth.getInstance();
 
-      /*  if(auth.getCurrentUser()!= null){
+        /*if(auth.getCurrentUser()!= null){
             finish();
             startActivity(new Intent(getApplicationContext(),MainActivity.class));
-        } */
+        }*/
 
         setContentView(R.layout.activity_login);
         inputschoolno = (EditText) findViewById(R.id.schoolno);
@@ -71,7 +71,7 @@ public class Login extends AppCompatActivity {
                 final String password = inputPassword.getText().toString();
 
                 if (TextUtils.isEmpty(schoolno)) {
-                    Toast.makeText(getApplicationContext(), "Okul numaranızı giriniz!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Öğrenci numaranızı giriniz!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
@@ -95,9 +95,9 @@ public class Login extends AppCompatActivity {
                                 if (!task.isSuccessful()) {
                                     // there was an error
                                     if (password.length() < 6) {
-                                        inputPassword.setError(getString(R.string.minimum_password));
+                                        inputPassword.setError("Lütfen, En Az 6 Haneli Bir Şifre Giriniz!");
                                     } else {
-                                        Toast.makeText(Login.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
+                                        Toast.makeText(Login.this, "Giriş Başarısız. \n Lütfen Okul Numaranızı Kontrol Ediniz.", Toast.LENGTH_LONG).show();
                                     }
                                 } else {
                                     try{

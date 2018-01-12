@@ -30,7 +30,7 @@
                 android:gravity="center_vertical"
                 android:text="E-Spor Etkinliği"
                 android:textColor="@color/cardview_dark_background"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="normal"
                 android:typeface="sans" />
 
@@ -44,7 +44,7 @@
                 android:gravity="center_vertical"
                 android:text="Etkinlik Açıklaması"
                 android:textColor="@color/cardview_dark_background"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="normal"
                 android:typeface="sans" />
 

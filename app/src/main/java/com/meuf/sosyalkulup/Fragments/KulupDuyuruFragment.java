@@ -97,8 +97,8 @@ public class KulupDuyuruFragment extends Fragment {
         super.onResume();
         SharedPreferences sharedPref = getActivity().getSharedPreferences("com.meuf.sosyalkulup", Context.MODE_PRIVATE);
 
-        String Title1 = sharedPref.getString("title", "Etkinlik Bulunamadı");
-        String Message1 = sharedPref.getString("message", "Etkinlik açıklaması bulunamadı!");
+        String Title1 = sharedPref.getString("title", "Yeni Etkinlik Bulunamadı");
+        String Message1 = sharedPref.getString("message", "Yeni Etkinlik açıklaması bulunamadı!");
 
         Title.setText(Title1);
         Message.setText(Message1);

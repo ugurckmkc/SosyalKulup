@@ -1,13 +1,16 @@
 package com.meuf.sosyalkulup;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -42,6 +45,7 @@ public class ProfilActivity extends Activity {
     private CheckBox checkBox12;
 
     private Button profil_save;
+    private ProgressDialog loading;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,6 +78,17 @@ public class ProfilActivity extends Activity {
         profil_save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                loading = ProgressDialog.show(ProfilActivity.this,"Lütfen Bekleyiniz",null,true,true);
+
+                loading.show();
+
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        loading.dismiss();
+                    }
+                }, 1000);
 
                 final HashMap<String, String> user = new HashMap<String, String>();
                 user.put("ProfilName", profil_name_edit.getText().toString().trim());
@@ -123,6 +138,7 @@ public class ProfilActivity extends Activity {
                 dbref.child("DEMK").child(firuser.getUid()).setValue(user);
             }
                 finish();
+            Toast.makeText(ProfilActivity.this,"Kulüp kaydınız başarı ile tamamlanmıştır.",Toast.LENGTH_SHORT).show();
             }
         });
     }

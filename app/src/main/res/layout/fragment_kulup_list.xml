@@ -19,8 +19,9 @@
         android:focusable="true"
         android:padding="20dp"
         android:scaleType="centerCrop"
-        android:src="@drawable/user"
+        android:src="@drawable/if_plus_1814113_2"
         app:backgroundTint="@color/cardview_light_background"
+        app:elevation="10dp"
         app:fabSize="normal" />
 
     <android.support.v7.widget.RecyclerView

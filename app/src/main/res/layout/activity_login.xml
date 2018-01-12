@@ -82,64 +82,53 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/relativeLayout"
+        android:layout_alignStart="@+id/relativeLayout"
         android:layout_below="@+id/relativeLayout"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:orientation="vertical"
-        android:paddingLeft="50dp"
-        android:layout_alignEnd="@+id/relativeLayout"
-        android:layout_alignStart="@+id/relativeLayout">
+        >
 
-        <LinearLayout
-            android:id="@+id/linearLayout2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="false"
-            android:layout_alignStart="@+id/linearLayout3"
-            android:layout_centerInParent="false"
-            android:baselineAligned="false"
-            android:orientation="horizontal">
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="false"
+            android:layout_weight="1"
+            android:background="#259dd8"
+            android:text="Giriş Yap"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:textSize="18sp" />
 
-            <Button
-                android:id="@+id/btn_reset_password"
-                android:layout_width="107dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="false"
-                android:layout_alignParentTop="false"
-                android:layout_weight="1"
-                android:background="#4ab64a"
-                android:text="Şifremi Unuttum"
-                android:textAllCaps="false"
-                android:textColor="#fff"
-                android:textSize="18sp" />
+        <Button
+            android:id="@+id/btn_signup"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_above="@+id/linearLayout2"
+            android:layout_alignEnd="@+id/frameLayout"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="20dp"
+            android:layout_weight="1"
+            android:background="#4ab64a"
+            android:text="Kayıt Ol"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:textSize="18sp" />
 
-            <Button
-                android:id="@+id/btn_signup"
-                android:layout_width="65dp"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/linearLayout2"
-                android:layout_alignEnd="@+id/frameLayout"
-                android:layout_marginTop="20dp"
-                android:layout_weight="1"
-                android:background="#259dd8"
-                android:text="Kayıt Ol"
-                android:textAllCaps="false"
-                android:textColor="#fff"
-                android:textSize="18sp" />
-
-            <Button
-                android:id="@+id/btn_login"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="false"
-                android:layout_alignParentTop="false"
-                android:layout_weight="0.20"
-                android:background="#4ab64a"
-                android:text="Giriş Yap"
-                android:textAllCaps="false"
-                android:textColor="#fff"
-                android:textSize="18sp" />
-        </LinearLayout>
+        <Button
+            android:id="@+id/btn_reset_password"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentStart="false"
+            android:layout_alignParentTop="false"
+            android:layout_weight="1"
+            android:background="#4ab64a"
+            android:text="Şifremi Unuttum"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            android:textSize="18sp" />
 
     </LinearLayout>
 
